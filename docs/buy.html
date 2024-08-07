@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>購入申請書</title>
+    <link rel="stylesheet" href="buy.css">
+</head>
+<body>
+    <div class="container">
+        <h1>購入申請書</h1>
+        <form id="purchase-form">
+            <div id="products">
+                <div class="product">
+                    <h2>商品①</h2>
+                    <div class="form-group">
+                        <label for="purchase_date">購入予定日</label>
+                        <input type="date" name="purchase_date">
+                    </div>
+                    <div class="form-group">
+                        <label for="item_name">品名</label>
+                        <input type="text" name="item_name">
+                    </div>
+                    <div class="form-group">
+                        <label for="vendor">購入先</label>
+                        <input type="text" name="vendor">
+                    </div>
+                    <div class="form-group">
+                        <label for="unit_price">単価</label>
+                        <input type="number" name="unit_price" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label for="quantity">数量</label>
+                        <input type="number" name="quantity">
+                    </div>
+                    <div class="form-group">
+                        <label for="total_amount">金額</label>
+                        <input type="number" name="total_amount" step="0.01" readonly>
+                    </div>
+                </div>
+            </div>
+            <p id="product-count">現在の登録数: 1 / 最大登録数: 5</p>
+            <button type="button" id="add-product">商品を追加</button>
+            <div class="form-group">
+                <label for="purpose">購入目的</label>
+                <textarea id="purpose" name="purpose" rows="4"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="remarks">備考</label>
+                <textarea id="remarks" name="remarks" rows="4"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="reason">事後申請となった場合、事後申請となった理由</label>
+                <textarea id="reason" name="reason" rows="4"></textarea>
+            </div>
+            <button type="submit">送信</button>
+        </form>
+    </div>
+    <script>
+        const maxProducts = 5; // 一度に追加できる商品の上限数
+        let productCount = 1;
+
+        document.getElementById('add-product').addEventListener('click', addProduct);
+
+        function addProduct() {
+            const productContainer = document.getElementById('products');
+            const productCount = productContainer.getElementsByClassName('product').length;
+
+            if (productCount < maxProducts) {
+                const newProduct = document.createElement('div');
+                newProduct.classList.add('product');
+                newProduct.innerHTML = `
+                    <h2>商品${productCount + 1}</h2>
+                    <div class="form-group">
+                        <label for="purchase_date">購入予定日</label>
+                        <input type="date" name="purchase_date">
+                    </div>
+                    <div class="form-group">
+                        <label for="item_name">品名</label>
+                        <input type="text" name="item_name">
+                    </div>
+                    <div class="form-group">
+                        <label for="vendor">購入先</label>
+                        <input type="text" name="vendor">
+                    </div>
+                    <div class="form-group">
+                        <label for="unit_price">単価</label>
+                        <input type="number" name="unit_price" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label for="quantity">数量</label>
+                        <input type="number" name="quantity">
+            
