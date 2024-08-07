@@ -90,4 +90,36 @@
                     <div class="form-group">
                         <label for="quantity">数量</label>
                         <input type="number" name="quantity">
-            
+                    </div>
+                    <div class="form-group">
+                        <label for="total_amount">金額</label>
+                        <input type="number" name="total_amount" step="0.01" readonly>
+                    </div>
+                `;
+                productContainer.appendChild(newProduct);
+                updateProductCount();
+            } else {
+                alert('これ以上商品を追加できません。');
+            }
+        }
+
+        document.getElementById('purchase-form').addEventListener('input', calculateTotal);
+
+        function calculateTotal() {
+            const products = document.getElementsByClassName('product');
+            for (let product of products) {
+                const unitPrice = parseFloat(product.querySelector('input[name="unit_price"]').value) || 0;
+                const quantity = parseInt(product.querySelector('input[name="quantity"]').value) || 0;
+                const total = unitPrice * quantity;
+                product.querySelector('input[name="total_amount"]').value = total.toFixed(2);
+            }
+        }
+
+        function updateProductCount() {
+            const productContainer = document.getElementById('products');
+            const productCount = productContainer.getElementsByClassName('product').length;
+            document.getElementById('product-count').textContent = `現在の登録数: ${productCount} / 最大登録数: ${maxProducts}`;
+        }
+    </script>
+</body>
+</html>
