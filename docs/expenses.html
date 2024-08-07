@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>経費精算書</title>
+    <link rel="stylesheet" href="expenses.css">
+</head>
+<body>
+    <div class="container">
+        <h1>経費精算書</h1>
+        <form id="expenses-form">
+            <p>以下の通り、経費の精算をお願いいたします。</p>
+            <div id="expenses">
+                <div class="expense">
+                    <h2>経費項目①</h2>
+                    <div class="form-group">
+                        <label for="date">日付</label>
+                        <input type="date" name="date">
+                    </div>
+                    <div class="form-group">
+                        <label for="receipt_number">領収書番号</label>
+                        <input type="text" name="receipt_number">
+                    </div>
+                    <div class="form-group">
+                        <label for="account_item">勘定科目</label>
+                        <select name="account_item">
+                            <option value="旅費交通費">旅費交通費</option>
+                            <option value="会議費">会議費</option>
+                            <option value="修繕費">修繕費</option>
+                            <option value="衛生費">衛生費</option>
+                            <option value="通信費">通信費</option>
+                            <option value="交際接待費">交際接待費</option>
+                            <option value="備品消耗品費">備品消耗品費</option>
+                            <option value="福利厚生費">福利厚生費</option>
+                            <option value="車両費">車両費</option>
+                            <option value="研修費">研修費</option>
+                            <option value="新聞図書費">新聞図書費</option>
+                            <option value="システム管理費">システム管理費</option>
+                            <option value="給食材料費">給食材料費</option>
+                            <option value="租税公課">租税公課</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="payment_content">支払内容</label>
+                        <input type="text" name="payment_content">
+                    </div>
+                    <div class="form-group">
+                        <label for="payment_to">支払先</label>
+                        <input type="text" name="payment_to">
+                    </div>
+                    <div class="form-group">
+                        <label for="amount">金額</label>
+                        <input type="number" name="amount" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label for="receipt_file">領収書データ</label>
+                        <input type="file" name="receipt_file" accept="image/*,application/pdf">
+                    </div>
+                </div>
+            </div>
+            <p id="expense-count">現在の登録数: 1 / 最大登録数: 10</p>
+            <button type="button" id="add-expense">経費項目を追加</button>
+            <div class="form-group">
+                <label for="total_amount">合計金額</label>
+                <input type="number" id="total_amount" name="total_amount" step="0.01" readonly>
+            </div>
+            <div class="form-group">
+                <label for="remarks">備考</label>
+                <textarea id="remarks" name="remarks" rows="4"></textarea>
+            </div>
+            <button type="submit">送信</button>
+        </form>
+    </div>
+    <script>
+        const maxExpenses = 10; // 一度に追加できる経費項目の上限数
+        let expenseCount = 1;
+
+        document.getElementById('add-expense').addEventListener('click', addExpense);
+
+        function addExpense() {
+            const expenseContainer = document.getElementById('expenses');
+            const expenseCount = expenseContainer.getElementsByClassName('expense').length;
+
+            if (expenseCount < maxExpenses) {
+                const newExpense = document.createElement('div');
+                newExpense.classList.add('expense');
+                newExpense.innerHTML = `
+                    <h2>経費項目${expenseCount + 1}</h2>
+                    <div class="form-group">
+                        <label for="date">日付</label>
+                        <input type="date" name="date">
+                    </div>
+                    <div class="form-group">
+                        <label for="receipt_number">領収書番号</label>
+                        <input type="text" name="receipt_number">
+                    </div>
+                    <div class="form-group">
+                        <label for="account_item">勘定科目</label>
+                        <select name="account_item">
+                            <option value="旅費交通費">旅費交通費</option>
+                            <option value="会議費">会議費</option>
+                            <option value="修繕費">修繕費</option>
+                            <option value="衛生費">衛生費</option>
+                            <option value="通信費">通信費</option>
+                            <option value="交際接待費">交際接待費</option>
+                            <option value="備品消耗品費">備品消耗品費</option>
+                            <option value="福利厚生費">福利厚生費</option>
+                            <option value="車両費">車両費</option>
+                            <option value="研修費">研修費</option>
+                            <option value="新聞図書費">新聞図書費</option>
+                            <option value="システム管理費">システム管理費</option>
+                            <option value="給食材料費">給食材料費</option>
+                            <option value="租税公課">租税公課</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="payment_content">支払内容</label>
+                        <input type="text" name="payment_content">
+                    </div>
+                    <div class="form-group">
+                        <label for="payment_to">支払先</label>
+                        <input type="text" name="payment_to">
+                    </div>
+                    <div class="form-group">
+                        <label for="amount">金額</label>
+                        <input type="number" name="amount" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label for="receipt_file">領収書データ</label>
+                        <input type="file" name="receipt_file" accept="image/*,application/pdf">
+                    </div>
+                `;
+                expenseContainer.appendChild(newExpense);
+                updateExpenseCount();
+                calculateTotal();
+            } else {
+                alert('これ以上経費項目を追加できません。');
+            }
+        }
+
+        document.getElementById('expenses-form').addEventListener('input', calculateTotal);
+
+        function calculateTotal() {
+            const expenses = document.getElementsByClassName('expense');
+            let total = 0;
+            for (let expense of expenses) {
+                const amount = parseFloat(expense.querySelector('input[name="amount"]').value) || 0;
+                total += amount;
+            }
+            document.getElementById('total_amount').value = total.toFixed(2);
+        }
+
+        function updateExpenseCount() {
+            const expenseContainer = document.getElementById('expenses');
+            const expenseCount = expenseContainer.getElementsByClassName('expense').length;
+            document.getElementById('expense-count').textContent = `現在の登録数: ${expenseCount} / 最大登録数: ${maxExpenses}`;
+        }
+    </script>
+</body>
+</html>
