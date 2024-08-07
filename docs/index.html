@@ -1,1 +1,76 @@
 
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>結婚届</title>
+    <link rel="stylesheet" href="Marriage_registration_final_adjusted.css">
+</head>
+<body>
+    <div class="container">
+        <h1>結婚届</h1>
+        <form>
+            <div class="form-group">
+                <label for="submission_date">届出日</label>
+                <input type="date" id="submission_date" name="submission_date">
+            </div>
+            <div class="form-group">
+                <label for="affiliation">所属</label>
+                <select id="affiliation" name="affiliation">
+                    <option value="常勤">常勤</option>
+                    <option value="ﾊﾟｰﾄ">ﾊﾟｰﾄ</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="employee_number">社員番号</label>
+                <input type="text" id="employee_number" name="employee_number">
+            </div>
+            <div class="form-group">
+                <label for="name">氏名</label>
+                <input type="text" id="name" name="name">
+                <input type="text" id="maiden_name" name="maiden_name" placeholder="旧姓">
+            </div>
+            <div class="form-group">
+                <label for="marriage_date">結婚年月日 (入籍年月日)</label>
+                <input type="date" id="marriage_date" name="marriage_date">
+            </div>
+            <div class="form-group">
+                <label for="new_name_kana">新本人氏名 (ﾌﾘｶﾞﾅ)</label>
+                <input type="text" id="new_name_kana" name="new_name_kana">
+            </div>
+            <div class="form-group">
+                <label for="spouse_name_kana">配偶者氏名 (ﾌﾘｶﾞﾅ)</label>
+                <input type="text" id="spouse_name_kana" name="spouse_name_kana">
+            </div>
+            <div class="form-group">
+                <label for="new_address">新住所 (ﾌﾘｶﾞﾅ)</label>
+                <input type="text" id="new_address" name="new_address">
+            </div>
+            <div class="form-group">
+                <label for="phone_number">電話番号</label>
+                <input type="text" id="phone_number" name="phone_number">
+            </div>
+            <div class="form-group">
+                <label for="attachment_documents">添付書類</label>
+                <textarea id="attachment_documents" name="attachment_documents" rows="4"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="change_of_dependents">同居家族変更時には以下に記載してください</label>
+                <textarea id="change_of_dependents" name="change_of_dependents" rows="4"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="marriage_leave">結婚休暇取得日</label>
+                <input type="date" id="marriage_leave_start" name="marriage_leave_start">
+                <span>～</span>
+                <input type="date" id="marriage_leave_end" name="marriage_leave_end">
+            </div>
+            <div class="form-group">
+                <label for="comments">本部使用欄</label>
+                <textarea id="comments" name="comments" rows="4"></textarea>
+            </div>
+            <button type="submit">送信</button>
+        </form>
+    </div>
+</body>
+</html>
