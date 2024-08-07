@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>承認書</title>
+    <link rel="stylesheet" href="bbb.css">
+</head>
+<body>
+    <div class="container">
+        <h1>承認書</h1>
+
+        <section class="approver-section">
+            <h2>承認者情報</h2>
+            <form>
+                <div class="form-group">
+                    <label for="approval">【決裁】</label>
+                    <div class="radio-group">
+                        <label>許可<input type="radio" id="approval_yes" name="approval" value="yes"></label>
+                        <label>再検討<input type="radio" id="approval_reconsider" name="approval" value="reconsider"></label>
+                        <label>見送り<input type="radio" id="approval_no" name="approval" value="no"></label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="other_approval">その他</label>
+                    <div class="checkbox-group">
+                        <label>領収書提出<input type="checkbox" id="receipt_submission" name="other_approval" value="receipt_submission"></label>
+                        <label>実施報告書提出<input type="checkbox" id="implementation_report" name="other_approval" value="implementation_report"></label>
+                        <label>経過報告書提出<input type="checkbox" id="progress_report" name="other_approval" value="progress_report"></label>
+                        <label>その他<input type="text" id="other_text" name="other_text" placeholder="その他（　　　　　　　　　　　　　　　）"></label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="head_office_use">※本部使用欄</label>
+                    <textarea id="head_office_use" name="head_office_use" rows="4"></textarea>
+                </div>
+                <button type="submit">送信</button>
+            </form>
+        </section>
+    </div>
+</body>
+</html>
