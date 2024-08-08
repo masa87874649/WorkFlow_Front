@@ -4,74 +4,91 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>経費精算書</title>
-    <link rel="stylesheet" href="expenses.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <h1>経費精算書</h1>
-        <form id="expenses-form">
-            <p>以下の通り、経費の精算をお願いいたします。</p>
-            <div id="expenses">
-                <div class="expense">
-                    <h2>経費項目①</h2>
-                    <div class="form-group">
-                        <label for="date">日付</label>
-                        <input type="date" name="date">
-                    </div>
-                    <div class="form-group">
-                        <label for="receipt_number">領収書番号</label>
-                        <input type="text" name="receipt_number">
-                    </div>
-                    <div class="form-group">
-                        <label for="account_item">勘定科目</label>
-                        <select name="account_item">
-                            <option value="旅費交通費">旅費交通費</option>
-                            <option value="会議費">会議費</option>
-                            <option value="修繕費">修繕費</option>
-                            <option value="衛生費">衛生費</option>
-                            <option value="通信費">通信費</option>
-                            <option value="交際接待費">交際接待費</option>
-                            <option value="備品消耗品費">備品消耗品費</option>
-                            <option value="福利厚生費">福利厚生費</option>
-                            <option value="車両費">車両費</option>
-                            <option value="研修費">研修費</option>
-                            <option value="新聞図書費">新聞図書費</option>
-                            <option value="システム管理費">システム管理費</option>
-                            <option value="給食材料費">給食材料費</option>
-                            <option value="租税公課">租税公課</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="payment_content">支払内容</label>
-                        <input type="text" name="payment_content">
-                    </div>
-                    <div class="form-group">
-                        <label for="payment_to">支払先</label>
-                        <input type="text" name="payment_to">
-                    </div>
-                    <div class="form-group">
-                        <label for="amount">金額</label>
-                        <input type="number" name="amount" step="0.01">
-                    </div>
-                    <div class="form-group">
-                        <label for="receipt_file">領収書データ</label>
-                        <input type="file" name="receipt_file" accept="image/*,application/pdf">
-                    </div>
+    <div class="container mt-5" style="max-width: 800px;">
+        <a href="https://masa87874649.github.io/WorkFlow_Front/" class="btn btn-danger mb-3">戻る</a>
+        <section class="expenses-section">
+            <div class="card shadow mb-4">
+                <div class="card-header bg-light text-dark fw-bold">
+                    <h1 class="text-center my-4">経費精算書</h1>
+                </div>
+                <div class="card-body">
+                    <form id="expenses-form">
+                        <p>以下の通り、経費の精算をお願いいたします。</p>
+                        <div id="expenses">
+                            <div class="expense card mb-3 border-primary">
+                                <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                                    <span>経費項目①</span>
+                                    <button type="button" class="btn btn-danger btn-sm" onclick="removeExpense(this)">削除</button>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label for="date" class="form-label fw-bold text-dark">日付</label>
+                                            <input type="date" name="date" class="form-control border-dark">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="receipt_number" class="form-label fw-bold text-dark">領収書番号</label>
+                                            <input type="text" name="receipt_number" class="form-control border-dark">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="account_item" class="form-label fw-bold text-dark">勘定科目</label>
+                                            <select name="account_item" class="form-select border-dark">
+                                                <option value="旅費交通費">旅費交通費</option>
+                                                <option value="会議費">会議費</option>
+                                                <option value="修繕費">修繕費</option>
+                                                <option value="衛生費">衛生費</option>
+                                                <option value="通信費">通信費</option>
+                                                <option value="交際接待費">交際接待費</option>
+                                                <option value="備品消耗品費">備品消耗品費</option>
+                                                <option value="福利厚生費">福利厚生費</option>
+                                                <option value="車両費">車両費</option>
+                                                <option value="研修費">研修費</option>
+                                                <option value="新聞図書費">新聞図書費</option>
+                                                <option value="システム管理費">システム管理費</option>
+                                                <option value="給食材料費">給食材料費</option>
+                                                <option value="租税公課">租税公課</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="payment_content" class="form-label fw-bold text-dark">支払内容</label>
+                                            <input type="text" name="payment_content" class="form-control border-dark">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="payment_to" class="form-label fw-bold text-dark">支払先</label>
+                                            <input type="text" name="payment_to" class="form-control border-dark">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="amount" class="form-label fw-bold text-dark">金額</label>
+                                            <input type="number" name="amount" step="0.01" class="form-control border-dark">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="receipt_file" class="form-label fw-bold text-dark">領収書データ</label>
+                                            <input type="file" name="receipt_file" accept="image/*,application/pdf" class="form-control border-dark">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p id="expense-count">現在の登録数: 1 / 最大登録数: 10</p>
+                        <button type="button" id="add-expense" class="btn btn-primary mb-3">経費項目を追加</button>
+                        <div class="mb-4">
+                            <label for="total_amount" class="form-label fw-bold text-dark">合計金額</label>
+                            <input type="number" id="total_amount" name="total_amount" step="0.01" class="form-control border-dark" readonly>
+                        </div>
+                        <div class="mb-4">
+                            <label for="remarks" class="form-label fw-bold text-dark">備考</label>
+                            <textarea id="remarks" name="remarks" rows="4" class="form-control border-dark"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-success w-100 mb-3">送信</button>
+                    </form>
                 </div>
             </div>
-            <p id="expense-count">現在の登録数: 1 / 最大登録数: 10</p>
-            <button type="button" id="add-expense">経費項目を追加</button>
-            <div class="form-group">
-                <label for="total_amount">合計金額</label>
-                <input type="number" id="total_amount" name="total_amount" step="0.01" readonly>
-            </div>
-            <div class="form-group">
-                <label for="remarks">備考</label>
-                <textarea id="remarks" name="remarks" rows="4"></textarea>
-            </div>
-            <button type="submit">送信</button>
-        </form>
+        </section>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
     <script>
         const maxExpenses = 10; // 一度に追加できる経費項目の上限数
         let expenseCount = 1;
@@ -84,51 +101,58 @@
 
             if (expenseCount < maxExpenses) {
                 const newExpense = document.createElement('div');
-                newExpense.classList.add('expense');
+                newExpense.classList.add('expense', 'card', 'mb-3', 'border-primary');
                 newExpense.innerHTML = `
-                    <h2>経費項目${expenseCount + 1}</h2>
-                    <div class="form-group">
-                        <label for="date">日付</label>
-                        <input type="date" name="date">
+                    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                        <span>経費項目${expenseCount + 1}</span>
+                        <button type="button" class="btn btn-danger btn-sm" onclick="removeExpense(this)">削除</button>
                     </div>
-                    <div class="form-group">
-                        <label for="receipt_number">領収書番号</label>
-                        <input type="text" name="receipt_number">
-                    </div>
-                    <div class="form-group">
-                        <label for="account_item">勘定科目</label>
-                        <select name="account_item">
-                            <option value="旅費交通費">旅費交通費</option>
-                            <option value="会議費">会議費</option>
-                            <option value="修繕費">修繕費</option>
-                            <option value="衛生費">衛生費</option>
-                            <option value="通信費">通信費</option>
-                            <option value="交際接待費">交際接待費</option>
-                            <option value="備品消耗品費">備品消耗品費</option>
-                            <option value="福利厚生費">福利厚生費</option>
-                            <option value="車両費">車両費</option>
-                            <option value="研修費">研修費</option>
-                            <option value="新聞図書費">新聞図書費</option>
-                            <option value="システム管理費">システム管理費</option>
-                            <option value="給食材料費">給食材料費</option>
-                            <option value="租税公課">租税公課</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="payment_content">支払内容</label>
-                        <input type="text" name="payment_content">
-                    </div>
-                    <div class="form-group">
-                        <label for="payment_to">支払先</label>
-                        <input type="text" name="payment_to">
-                    </div>
-                    <div class="form-group">
-                        <label for="amount">金額</label>
-                        <input type="number" name="amount" step="0.01">
-                    </div>
-                    <div class="form-group">
-                        <label for="receipt_file">領収書データ</label>
-                        <input type="file" name="receipt_file" accept="image/*,application/pdf">
+                    <div class="card-body">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="date" class="form-label fw-bold text-dark">日付</label>
+                                <input type="date" name="date" class="form-control border-dark">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="receipt_number" class="form-label fw-bold text-dark">領収書番号</label>
+                                <input type="text" name="receipt_number" class="form-control border-dark">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="account_item" class="form-label fw-bold text-dark">勘定科目</label>
+                                <select name="account_item" class="form-select border-dark">
+                                    <option value="旅費交通費">旅費交通費</option>
+                                    <option value="会議費">会議費</option>
+                                    <option value="修繕費">修繕費</option>
+                                    <option value="衛生費">衛生費</option>
+                                    <option value="通信費">通信費</option>
+                                    <option value="交際接待費">交際接待費</option>
+                                    <option value="備品消耗品費">備品消耗品費</option>
+                                    <option value="福利厚生費">福利厚生費</option>
+                                    <option value="車両費">車両費</option>
+                                    <option value="研修費">研修費</option>
+                                    <option value="新聞図書費">新聞図書費</option>
+                                    <option value="システム管理費">システム管理費</option>
+                                    <option value="給食材料費">給食材料費</option>
+                                    <option value="租税公課">租税公課</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="payment_content" class="form-label fw-bold text-dark">支払内容</label>
+                                <input type="text" name="payment_content" class="form-control border-dark">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="payment_to" class="form-label fw-bold text-dark">支払先</label>
+                                <input type="text" name="payment_to" class="form-control border-dark">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="amount" class="form-label fw-bold text-dark">金額</label>
+                                <input type="number" name="amount" step="0.01" class="form-control border-dark">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="receipt_file" class="form-label fw-bold text-dark">領収書データ</label>
+                                <input type="file" name="receipt_file" accept="image/*,application/pdf" class="form-control border-dark">
+                            </div>
+                        </div>
                     </div>
                 `;
                 expenseContainer.appendChild(newExpense);
@@ -137,6 +161,13 @@
             } else {
                 alert('これ以上経費項目を追加できません。');
             }
+        }
+
+        function removeExpense(button) {
+            const expense = button.closest('.expense');
+            expense.remove();
+            updateExpenseCount();
+            calculateTotal();
         }
 
         document.getElementById('expenses-form').addEventListener('input', calculateTotal);
@@ -148,7 +179,7 @@
                 const amount = parseFloat(expense.querySelector('input[name="amount"]').value) || 0;
                 total += amount;
             }
-            document.getElementById('total_amount').value = total.toFixed(2);
+            document.getElementById('total_amount').value = total;
         }
 
         function updateExpenseCount() {
