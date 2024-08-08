@@ -4,54 +4,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>購入申請書</title>
-    <link rel="stylesheet" href="buy.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <h1>購入申請書</h1>
-        <form id="purchase-form">
-            <div id="products">
-                <div class="product">
-                    <h2>商品①</h2>
-                    <div class="form-group">
-                        <label for="purchase_date">購入予定日</label>
-                        <input type="date" name="purchase_date">
-                    </div>
-                    <div class="form-group">
-                        <label for="item_name">品名</label>
-                        <input type="text" name="item_name">
-                    </div>
-                    <div class="form-group">
-                        <label for="vendor">購入先</label>
-                        <input type="text" name="vendor">
-                    </div>
-                    <div class="form-group">
-                        <label for="unit_price">単価</label>
-                        <input type="number" name="unit_price" step="0.01">
-                    </div>
-                    <div class="form-group">
-                        <label for="quantity">数量</label>
-                        <input type="number" name="quantity">
-                    </div>
-                    <div class="form-group">
-                        <label for="total_amount">金額</label>
-                        <input type="number" name="total_amount" step="0.01" readonly>
-                    </div>
+    <div class="container mt-5" style="max-width: 800px;">
+        <a href="https://masa87874649.github.io/WorkFlow_Front/" class="btn btn-danger mb-3">戻る</a>
+        <section class="buy-section">
+            <div class="card shadow mb-4">
+                <div class="card-header bg-light text-dark fw-bold">
+                    <h1 class="text-center my-4">購入申請書</h1>
+                </div>
+                <div class="card-body">
+                    <form id="purchase-form">
+                        <div id="products">
+                            <div class="product card mb-3 border-primary">
+                                <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                                    <span>商品①</span>
+                                    <button type="button" class="btn btn-danger btn-sm" onclick="removeProduct(this)">削除</button>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label for="purchase_date" class="form-label fw-bold text-dark">購入予定日</label>
+                                            <input type="date" name="purchase_date" class="form-control border-dark">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="item_name" class="form-label fw-bold text-dark">品名</label>
+                                            <input type="text" name="item_name" class="form-control border-dark">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="vendor" class="form-label fw-bold text-dark">購入先</label>
+                                            <input type="text" name="vendor" class="form-control border-dark">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="unit_price" class="form-label fw-bold text-dark">単価</label>
+                                            <input type="number" name="unit_price" step="0.01" class="form-control border-dark">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="quantity" class="form-label fw-bold text-dark">数量</label>
+                                            <input type="number" name="quantity" class="form-control border-dark">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="total_amount" class="form-label fw-bold text-dark">金額</label>
+                                            <input type="number" name="total_amount" step="0.01" class="form-control border-dark" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p id="product-count">現在の登録数: 1 / 最大登録数: 5</p>
+                        <button type="button" id="add-product" class="btn btn-primary mb-3">商品を追加</button>
+                        <div class="mb-4">
+                            <label for="purpose" class="form-label fw-bold text-dark">購入目的</label>
+                            <textarea id="purpose" name="purpose" rows="4" class="form-control border-dark"></textarea>
+                        </div>
+                        <div class="mb-4">
+                            <label for="remarks" class="form-label fw-bold text-dark">備考</label>
+                            <textarea id="remarks" name="remarks" rows="4" class="form-control border-dark" placeholder="事後申請となった場合、事後申請となった理由"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-success w-100 mb-3">送信</button>
+                    </form>
                 </div>
             </div>
-            <p id="product-count">現在の登録数: 1 / 最大登録数: 5</p>
-            <button type="button" id="add-product">商品を追加</button>
-            <div class="form-group">
-                <label for="purpose">購入目的</label>
-                <textarea id="purpose" name="purpose" rows="4"></textarea>
-            </div>
-            <div class="form-group">
-                <label for="remarks">備考</label>
-                <textarea id="remarks" name="remarks" rows="4" placeholder="事後申請となった場合、事後申請となった理由"></textarea>
-            </div>
-            <button type="submit">送信</button>
-        </form>
+        </section>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
     <script>
         const maxProducts = 5; // 一度に追加できる商品の上限数
         let productCount = 1;
@@ -64,32 +81,39 @@
 
             if (productCount < maxProducts) {
                 const newProduct = document.createElement('div');
-                newProduct.classList.add('product');
+                newProduct.classList.add('product', 'card', 'mb-3', 'border-primary');
                 newProduct.innerHTML = `
-                    <h2>商品${productCount + 1}</h2>
-                    <div class="form-group">
-                        <label for="purchase_date">購入予定日</label>
-                        <input type="date" name="purchase_date">
+                    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                        <span>商品${productCount + 1}</span>
+                        <button type="button" class="btn btn-danger btn-sm" onclick="removeProduct(this)">削除</button>
                     </div>
-                    <div class="form-group">
-                        <label for="item_name">品名</label>
-                        <input type="text" name="item_name">
-                    </div>
-                    <div class="form-group">
-                        <label for="vendor">購入先</label>
-                        <input type="text" name="vendor">
-                    </div>
-                    <div class="form-group">
-                        <label for="unit_price">単価</label>
-                        <input type="number" name="unit_price" step="0.01">
-                    </div>
-                    <div class="form-group">
-                        <label for="quantity">数量</label>
-                        <input type="number" name="quantity">
-                    </div>
-                    <div class="form-group">
-                        <label for="total_amount">金額</label>
-                        <input type="number" name="total_amount" step="0.01" readonly>
+                    <div class="card-body">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="purchase_date" class="form-label fw-bold text-dark">購入予定日</label>
+                                <input type="date" name="purchase_date" class="form-control border-dark">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="item_name" class="form-label fw-bold text-dark">品名</label>
+                                <input type="text" name="item_name" class="form-control border-dark">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="vendor" class="form-label fw-bold text-dark">購入先</label>
+                                <input type="text" name="vendor" class="form-control border-dark">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="unit_price" class="form-label fw-bold text-dark">単価</label>
+                                <input type="number" name="unit_price" step="0.01" class="form-control border-dark">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="quantity" class="form-label fw-bold text-dark">数量</label>
+                                <input type="number" name="quantity" class="form-control border-dark">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="total_amount" class="form-label fw-bold text-dark">金額</label>
+                                <input type="number" name="total_amount" step="0.01" class="form-control border-dark" readonly>
+                            </div>
+                        </div>
                     </div>
                 `;
                 productContainer.appendChild(newProduct);
@@ -99,6 +123,13 @@
             }
         }
 
+        function removeProduct(button) {
+            const product = button.closest('.product');
+            product.remove();
+            updateProductCount();
+            calculateTotal();
+        }
+
         document.getElementById('purchase-form').addEventListener('input', calculateTotal);
 
         function calculateTotal() {
@@ -106,8 +137,8 @@
             for (let product of products) {
                 const unitPrice = parseFloat(product.querySelector('input[name="unit_price"]').value) || 0;
                 const quantity = parseInt(product.querySelector('input[name="quantity"]').value) || 0;
-                const total = unitPrice * quantity;
-                product.querySelector('input[name="total_amount"]').value = total.toFixed(2);
+                const total = Math.round(unitPrice * quantity); //整数のみ
+                product.querySelector('input[name="total_amount"]').value = total;
             }
         }
 
