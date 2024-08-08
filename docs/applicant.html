@@ -3,54 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>起案申請書</title>
-    <link rel="stylesheet" href="bbb.css">
+    <title>申請書</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <h1>起案申請書</h1>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">申請書</h1>
 
         <section class="applicant-section">
-            <h2>申請内容</h2>
-            <form>
-                <div class="form-group">
-                    <label for="draft_matter">起案事項</label>
-                    <input type="text" id="draft_matter" name="draft_matter">
+            <h2 class="text-center mb-4">申請者情報</h2>
+            <form id="application-form">
+                <div class="mb-3">
+                    <label for="draft_matter" class="form-label">起案事項</label>
+                    <input type="text" id="draft_matter" name="draft_matter" class="form-control">
                 </div>
-                <div class="form-group">
-                    <label for="draft_content">起案内容（効果）</label>
-                    <textarea id="draft_content" name="draft_content" rows="4"></textarea>
+                <div class="mb-3">
+                    <label for="draft_content" class="form-label">起案内容（効果）</label>
+                    <textarea id="draft_content" name="draft_content" rows="4" class="form-control"></textarea>
                 </div>
-                <div class="form-group">
-                    <label for="vendor_name">業者名（担当者）</label>
-                    <input type="text" id="vendor_name" name="vendor_name">
-                    <label for="vendor_phone">電話番号</label>
-                    <input type="text" id="vendor_phone" name="vendor_phone">
+                <div class="mb-3">
+                    <label for="vendor_name" class="form-label">業者名（担当者）</label>
+                    <input type="text" id="vendor_name" name="vendor_name" class="form-control mb-2">
+                    <label for="vendor_phone" class="form-label">電話番号</label>
+                    <input type="text" id="vendor_phone" name="vendor_phone" class="form-control">
                 </div>
-                <div class="form-group">
-                    <label for="cost">費用</label>
-                    <div class="radio-group">
-                        <label>今回のみ<input type="radio" id="one_time" name="cost" value="one_time"></label>
-                        <label>継続実施<input type="radio" id="continuous" name="cost" value="continuous"></label>
+                <div class="mb-3">
+                    <label for="cost" class="form-label">費用</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" id="one_time" name="cost" value="one_time">
+                        <label class="form-check-label" for="one_time">今回のみ</label>
                     </div>
-                    <input type="text" id="cost_amount" name="cost_amount" placeholder="（税込）">
-                </div>
-                <div class="form-group">
-                    <label for="manager_comments">管理者(所属長)コメント</label>
-                    <textarea id="manager_comments" name="manager_comments" rows="4"></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="attachments">添付書類</label>
-                    <textarea id="attachments" name="attachments" rows="2" placeholder=""></textarea>
-                    <div class="checkbox-group">
-                        <label>見積書<input type="checkbox" id="estimate" name="attachments_check" value="estimate"></label>
-                        <label>契約書<input type="checkbox" id="contract" name="attachments_check" value="contract"></label>
-                        <label>その他<input type="checkbox" id="other" name="attachments_check" value="other"></label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" id="continuous" name="cost" value="continuous">
+                        <label class="form-check-label" for="continuous">継続実施</label>
                     </div>
+                    <input type="number" id="cost_amount" name="cost_amount" class="form-control mt-2" placeholder="（税込）">
                 </div>
-                <button type="submit">送信</button>
+                <div class="mb-3">
+                    <label for="manager_comments" class="form-label">管理者(所属長)コメント</label>
+                    <textarea id="manager_comments" name="manager_comments" rows="4" class="form-control"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="attachments" class="form-label">添付書類</label>
+                    <input type="file" id="attachments" name="attachments" multiple class="form-control">
+                </div>
+                <div id="file-list" class="mb-3"></div>
+                <button type="submit" class="btn btn-primary w-100">送信</button>
             </form>
         </section>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('attachments').addEventListener('change', function(event) {
+            const fileList = document.getElementById('file-list');
+            fileList.innerHTML = ''; // Clear previous file list
+
+            const files = event.target.files;
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+                const listItem = document.createElement('div');
+                listItem.classList.add('mt-2');
+                listItem.innerHTML = `
+                    <div class="border p-2 rounded">
+                        ファイル名: ${file.name}, サイズ: ${file.size} bytes
+                        <select name="file_category_${i}" class="form-select mt-2">
+                            <option value="estimate">見積書</option>
+                            <option value="contract">契約書</option>
+                            <option value="other">その他</option>
+                        </select>
+                    </div>
+                `;
+                fileList.appendChild(listItem);
+            }
+        });
+
+        document.getElementById('application-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+
+            // ファイルと分類情報をフォームデータに追加
+            const files = document.getElementById('attachments').files;
+            for (let i = 0; i < files.length; i++) {
+                const category = document.querySelector(`select[name="file_category_${i}"]`).value;
+                formData.append('files[]', files[i]);
+                formData.append('categories[]', category);
+            }
+
+            // ファイルを含むデータをサーバーに送信する処理
+            fetch('/upload', {
+                method: 'POST',
+                body: formData
+            }).then(response => response.json())
+              .then(data => {
+                  console.log(data);
+                  alert('送信完了');
+              }).catch(error => {
+                  console.error(error);
+                  alert('送信エラー');
+              });
+        });
+    </script>
 </body>
 </html>
