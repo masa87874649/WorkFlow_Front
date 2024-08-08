@@ -5,51 +5,80 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>申請書</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .btn-green {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .btn-green:hover {
+            background-color: #45a049;
+        }
+
+        .card-header {
+            background-color: #f8f9fa;
+            font-weight: bold;
+        }
+
+        .card {
+            margin-bottom: 20px;
+        }
+
+        .form-container {
+            margin-bottom: 60px; /* 送信ボタンの下に余白を追加 */
+        }
+    </style>
 </head>
 <body>
     <div class="container mt-5">
         <h1 class="text-center mb-4">申請書</h1>
 
         <section class="applicant-section">
-            <h2 class="text-center mb-4">申請者情報</h2>
-            <form id="application-form">
-                <div class="mb-3">
-                    <label for="draft_matter" class="form-label">起案事項</label>
-                    <input type="text" id="draft_matter" name="draft_matter" class="form-control">
+            <div class="card">
+                <div class="card-header">
+                    申請者情報
                 </div>
-                <div class="mb-3">
-                    <label for="draft_content" class="form-label">起案内容（効果）</label>
-                    <textarea id="draft_content" name="draft_content" rows="4" class="form-control"></textarea>
+                <div class="card-body">
+                    <form id="application-form">
+                        <div class="mb-3">
+                            <label for="draft_matter" class="form-label">起案事項</label>
+                            <input type="text" id="draft_matter" name="draft_matter" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label for="draft_content" class="form-label">起案内容（効果）</label>
+                            <textarea id="draft_content" name="draft_content" rows="4" class="form-control"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="vendor_name" class="form-label">業者名（担当者）</label>
+                            <input type="text" id="vendor_name" name="vendor_name" class="form-control mb-2">
+                            <label for="vendor_phone" class="form-label">電話番号</label>
+                            <input type="text" id="vendor_phone" name="vendor_phone" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label for="cost" class="form-label">費用</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" id="one_time" name="cost" value="one_time">
+                                <label class="form-check-label" for="one_time">今回のみ</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" id="continuous" name="cost" value="continuous">
+                                <label class="form-check-label" for="continuous">継続実施</label>
+                            </div>
+                            <input type="number" id="cost_amount" name="cost_amount" class="form-control mt-2" placeholder="（税込）">
+                        </div>
+                        <div class="mb-3">
+                            <label for="manager_comments" class="form-label">管理者(所属長)コメント</label>
+                            <textarea id="manager_comments" name="manager_comments" rows="4" class="form-control"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="attachments" class="form-label">添付書類</label>
+                            <input type="file" id="attachments" name="attachments" multiple class="form-control">
+                        </div>
+                        <div id="file-list" class="mb-3"></div>
+                        <button type="submit" class="btn btn-green w-100 mb-3">送信</button>
+                    </form>
                 </div>
-                <div class="mb-3">
-                    <label for="vendor_name" class="form-label">業者名（担当者）</label>
-                    <input type="text" id="vendor_name" name="vendor_name" class="form-control mb-2">
-                    <label for="vendor_phone" class="form-label">電話番号</label>
-                    <input type="text" id="vendor_phone" name="vendor_phone" class="form-control">
-                </div>
-                <div class="mb-3">
-                    <label for="cost" class="form-label">費用</label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" id="one_time" name="cost" value="one_time">
-                        <label class="form-check-label" for="one_time">今回のみ</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" id="continuous" name="cost" value="continuous">
-                        <label class="form-check-label" for="continuous">継続実施</label>
-                    </div>
-                    <input type="number" id="cost_amount" name="cost_amount" class="form-control mt-2" placeholder="（税込）">
-                </div>
-                <div class="mb-3">
-                    <label for="manager_comments" class="form-label">管理者(所属長)コメント</label>
-                    <textarea id="manager_comments" name="manager_comments" rows="4" class="form-control"></textarea>
-                </div>
-                <div class="mb-3">
-                    <label for="attachments" class="form-label">添付書類</label>
-                    <input type="file" id="attachments" name="attachments" multiple class="form-control">
-                </div>
-                <div id="file-list" class="mb-3"></div>
-                <button type="submit" class="btn btn-primary w-100">送信</button>
-            </form>
+            </div>
         </section>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
