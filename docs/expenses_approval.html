@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>経費精算書 - 承認</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-3" style="max-width: 800px;">
+        <a href="https://masa87874649.github.io/WorkFlow_Front/" class="btn btn-danger mb-3">戻る</a>
+        <section class="expenses-section">
+            <div class="card shadow mb-4">
+                <div class="card-header bg-light text-dark fw-bold">
+                    <h1 class="text-center my-4">経費精算書 - 承認</h1>
+                </div>
+                <div class="card-body">
+                    <form id="expenses-approval-form">
+                        <p>以下の経費精算書の承認をお願いいたします。</p>
+                        <!-- 経費項目の内容はここに挿入される -->
+                        <div id="expenses">
+                            <!-- サンプル項目 -->
+                            <div class="expense card mb-3 border-primary">
+                                <div class="card-body">
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label for="date" class="form-label fw-bold text-dark">日付</label>
+                                            <input type="date" name="date" class="form-control border-dark" readonly>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="receipt_number" class="form-label fw-bold text-dark">領収書番号</label>
+                                            <input type="text" name="receipt_number" class="form-control border-dark" readonly>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="account_item" class="form-label fw-bold text-dark">勘定科目</label>
+                                            <input type="text" name="account_item" class="form-control border-dark" readonly>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="payment_content" class="form-label fw-bold text-dark">支払内容</label>
+                                            <input type="text" name="payment_content" class="form-control border-dark" readonly>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="payment_to" class="form-label fw-bold text-dark">支払先</label>
+                                            <input type="text" name="payment_to" class="form-control border-dark" readonly>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="amount" class="form-label fw-bold text-dark">金額</label>
+                                            <input type="number" name="amount" class="form-control border-dark" readonly>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="receipt_file" class="form-label fw-bold text-dark">領収書データ</label>
+                                            <input type="file" name="receipt_file" class="form-control border-dark" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label for="total_amount" class="form-label fw-bold text-dark">合計金額</label>
+                            <input type="number" id="total_amount" name="total_amount" class="form-control border-dark" readonly>
+                        </div>
+                        <div class="mb-4">
+                            <label for="remarks" class="form-label fw-bold text-dark">備考</label>
+                            <textarea id="remarks" name="remarks" rows="4" class="form-control border-dark" readonly></textarea>
+                        </div>
+                        <div class="mb-4">
+                            <label for="approval_stamp" class="form-label fw-bold text-dark">承認印</label>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold text-dark">所属長</label>
+                                    <input type="text" name="manager_stamp" class="form-control border-dark" readonly>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold text-dark">出納担当者</label>
+                                    <input type="text" name="accountant_stamp" class="form-control border-dark" readonly>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold text-dark">本部受付</label>
+                                    <input type="text" name="headquarters_reception_stamp" class="form-control border-dark" readonly>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold text-dark">本部処理</label>
+                                    <input type="text" name="headquarters_processing_stamp" class="form-control border-dark" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-success w-100 mb-3">承認</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
