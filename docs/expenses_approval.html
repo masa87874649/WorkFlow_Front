@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="container mt-3" style="max-width: 800px;">
-        <a href="http://127.0.0.1:5500/index.html" class="btn btn-danger mb-3">戻る</a>
+        <a href="https://masa87874649.github.io/WorkFlow_Front/" class="btn btn-danger mb-3">戻る</a>
         <section class="expenses-section">
             <div class="card shadow mb-4">
                 <div class="card-header bg-light text-dark fw-bold">
@@ -17,6 +17,18 @@
                 <div class="card-body">
                     <form id="expenses-approval-form">
                         <p>以下の経費精算書の承認をお願いいたします。</p>
+                        <div class="mb-4">
+                            <label for="submission_date" class="form-label fw-bold text-dark">申請日</label>
+                            <input type="date" id="submission_date" name="submission_date" class="form-control border-dark" readonly>
+                        </div>
+                        <div class="mb-4">
+                            <label for="applicant_name" class="form-label fw-bold text-dark">申請者の氏名</label>
+                            <input type="text" id="applicant_name" name="applicant_name" class="form-control border-dark" readonly>
+                        </div>
+                        <div class="mb-4">
+                            <label for="office" class="form-label fw-bold text-dark">所属事業所</label>
+                            <input type="text" id="office" name="office" class="form-control border-dark" readonly>
+                        </div>
                         <div id="expenses">
                             <div class="expense card mb-3">
                                 <div class="card-body">
@@ -67,7 +79,7 @@
                                 <div class="col d-flex flex-column align-items-center">
                                     <label class="form-label fw-bold text-dark text-center">所属長</label>
                                     <div class="border border-dark d-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
-                                        <img src="瀬戸山-本部長.svg" alt="本部承認 印鑑" class="img-fluid">
+                                        <img src="本部受付.svg" alt="本部受付 印鑑" class="img-fluid">
                                     </div>
                                 </div>
                                 <div class="col d-flex flex-column align-items-center">
@@ -79,13 +91,14 @@
                                 <div class="col d-flex flex-column align-items-center">
                                     <label class="form-label fw-bold text-dark text-center">本部受付</label>
                                     <div class="border border-dark d-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
-                                        <img src="瀬戸山-本部長.svg" alt="本部受付 印鑑" class="img-fluid">
+                                        <img src="本部受付.svg" alt="本部受付 印鑑" class="img-fluid">
                                     </div>
                                 </div>
                                 <div class="col d-flex flex-column align-items-center">
                                     <label class="form-label fw-bold text-dark text-center">本部処理</label>
                                     <div class="border border-dark d-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
-                                        <img src="瀬戸山-本部長.svg" alt="本部処理 印鑑" class="img-fluid">
+                                        <img src="本部受付.svg" alt="本部受付 印鑑" class="img-fluid">
+                                    </div>
                                 </div>
                             </div>
                         </div>
