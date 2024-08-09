@@ -17,66 +17,73 @@
                 <div class="card-body">
                     <form id="buy-approval-form">
                         <p>以下の購入申請の承認をお願いいたします。</p>
-                        <!-- 購入申請の内容はここに挿入される -->
                         <div id="products">
-                            <!-- サンプル商品 -->
-                            <div class="product card mb-3 border-primary">
+                            <div class="product card mb-3">
                                 <div class="card-body">
                                     <div class="row g-3">
                                         <div class="col-md-6">
-                                            <label for="purchase_date" class="form-label fw-bold text-dark">購入予定日</label>
-                                            <input type="date" name="purchase_date" class="form-control border-dark" readonly>
+                                            <label class="form-label fw-bold text-dark">購入予定日</label>
+                                            <input type="date" class="form-control border-dark" readonly>
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="item_name" class="form-label fw-bold text-dark">品名</label>
-                                            <input type="text" name="item_name" class="form-control border-dark" readonly>
+                                            <label class="form-label fw-bold text-dark">品名</label>
+                                            <input type="text" class="form-control border-dark" readonly>
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="vendor" class="form-label fw-bold text-dark">購入先</label>
-                                            <input type="text" name="vendor" class="form-control border-dark" readonly>
+                                            <label class="form-label fw-bold text-dark">購入先</label>
+                                            <input type="text" class="form-control border-dark" readonly>
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="unit_price" class="form-label fw-bold text-dark">単価</label>
-                                            <input type="number" name="unit_price" class="form-control border-dark" readonly>
+                                            <label class="form-label fw-bold text-dark">単価</label>
+                                            <input type="number" class="form-control border-dark" readonly>
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="quantity" class="form-label fw-bold text-dark">数量</label>
-                                            <input type="number" name="quantity" class="form-control border-dark" readonly>
+                                            <label class="form-label fw-bold text-dark">数量</label>
+                                            <input type="number" class="form-control border-dark" readonly>
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="total_amount" class="form-label fw-bold text-dark">金額</label>
-                                            <input type="number" name="total_amount" class="form-control border-dark" readonly>
+                                            <label class="form-label fw-bold text-dark">金額</label>
+                                            <input type="number" class="form-control border-dark" readonly>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="mb-4">
-                            <label for="purpose" class="form-label fw-bold text-dark">購入目的</label>
-                            <textarea id="purpose" name="purpose" rows="4" class="form-control border-dark" readonly></textarea>
+                            <label class="form-label fw-bold text-dark">購入目的</label>
+                            <textarea class="form-control border-dark" rows="4" readonly></textarea>
                         </div>
                         <div class="mb-4">
-                            <label for="remarks" class="form-label fw-bold text-dark">備考</label>
-                            <textarea id="remarks" name="remarks" rows="4" class="form-control border-dark" readonly></textarea>
+                            <label class="form-label fw-bold text-dark">備考</label>
+                            <textarea class="form-control border-dark" rows="4" readonly></textarea>
                         </div>
                         <div class="mb-4">
-                            <label for="approval_stamp" class="form-label fw-bold text-dark">承認印</label>
-                            <div class="row g-3">
-                                <div class="col-md-6">
-                                    <label class="form-label fw-bold text-dark">本部受付</label>
-                                    <input type="text" name="headquarters_reception_stamp" class="form-control border-dark" readonly>
+                            <h5 class="fw-bold text-center text-dark mb-3" style="background-color: #d3d3d3; padding: 10px;">承認印</h5>
+                            <div class="row row-cols-3 row-cols-md-5 g-3 justify-content-center">
+                                <div class="col d-flex flex-column align-items-center">
+                                    <label class="form-label fw-bold text-dark text-center">本部受付</label>
+                                    <div class="border border-dark d-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                                        <img src="本部受付.svg" alt="本部受付 印鑑" class="img-fluid">
+                                    </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <label class="form-label fw-bold text-dark">本部承認</label>
-                                    <input type="text" name="headquarters_approval_stamp" class="form-control border-dark" readonly>
+                                <div class="col d-flex flex-column align-items-center">
+                                    <label class="form-label fw-bold text-dark text-center">本部承認</label>
+                                    <div class="border border-dark d-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                                        <img src="本部承認.svg" alt="本部承認 印鑑" class="img-fluid">
+                                    </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <label class="form-label fw-bold text-dark">本部発注</label>
-                                    <input type="text" name="headquarters_order_stamp" class="form-control border-dark" readonly>
+                                <div class="col d-flex flex-column align-items-center">
+                                    <label class="form-label fw-bold text-dark text-center">本部発注</label>
+                                    <div class="border border-dark d-flex align-items-center justify-content-center" style="width: 80px; height: 80px;"></div>
                                 </div>
                             </div>
                         </div>
+                        <div class="mb-4">
+                            <label for="approval_comments" class="form-label fw-bold text-dark">承認者コメント</label>
+                            <textarea id="approval_comments" name="approval_comments" rows="4" class="form-control border-dark"></textarea>
+                        </div>
                         <button type="submit" class="btn btn-success w-100 mb-3">承認</button>
+                        <button type="button" class="btn btn-danger w-100">拒否</button>
                     </form>
                 </div>
             </div>
