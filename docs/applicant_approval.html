@@ -12,12 +12,11 @@
         <section class="applicant-section">
             <div class="card shadow mb-4">
                 <div class="card-header bg-light text-dark fw-bold">
-                    <h1 class="text-center my-4">起案書 - 承認</h1>
+                    <h1 class="text-center my-4">起案書 - 承認確認</h1>
                 </div>
                 <div class="card-body">
                     <form id="applicant-approval-form">
                         <p>以下の起案書の承認をお願いいたします。</p>
-                        <!-- 起案書の内容はここに挿入される -->
                         <div class="mb-4">
                             <label for="draft_matter" class="form-label fw-bold text-dark">起案事項</label>
                             <input type="text" id="draft_matter" name="draft_matter" class="form-control border-dark" readonly>
@@ -53,44 +52,62 @@
                             <input type="file" id="attachments" name="attachments" multiple class="form-control border-dark" readonly>
                         </div>
                         <div id="file-list" class="mb-4"></div>
-                        <div class="mb-4">
-                            <label for="approval_stamp" class="form-label fw-bold text-dark">承認印</label>
+
+                        <!-- 承認印セクション -->
+                        <div class="mb-4 p-3" style="background-color: #f8f9fa; border: 1px solid #dee2e6;">
+                            <h5 class="fw-bold text-center text-dark mb-3" style="background-color: #d3d3d3; padding: 10px;">承認印</h5>
                             <div class="row g-3">
-                                <div class="col-md-6">
-                                    <label class="form-label fw-bold text-dark">所属長</label>
-                                    <input type="text" name="manager_stamp" class="form-control border-dark" readonly>
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label fw-bold text-dark">部門部長</label>
-                                    <input type="text" name="department_manager_stamp" class="form-control border-dark" readonly>
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label fw-bold text-dark">本部受付</label>
-                                    <input type="text" name="headquarters_reception_stamp" class="form-control border-dark" readonly>
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label fw-bold text-dark">本部長</label>
-                                    <input type="text" name="headquarters_manager_stamp" class="form-control border-dark" readonly>
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label fw-bold text-dark">事務長</label>
-                                    <input type="text" name="executive_director_stamp" class="form-control border-dark" readonly>
-                                </div>
-                                <div class="col-md-6">
+                                <div class="col-md-3">
                                     <label class="form-label fw-bold text-dark">理事</label>
-                                    <input type="text" name="director_stamp" class="form-control border-dark" readonly>
+                                    <div class="border border-dark d-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                                        <img src="井上-理事.svg" alt="理事 印鑑" class="img-fluid">
+                                    </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-3">
                                     <label class="form-label fw-bold text-dark">理事長</label>
-                                    <input type="text" name="president_stamp" class="form-control border-dark" readonly>
+                                    <div class="border border-dark d-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                                        <img src="井上-理事長.svg" alt="理事長 印鑑" class="img-fluid">
+                                    </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-3">
+                                    <label class="form-label fw-bold text-dark">事務長</label>
+                                    <div class="border border-dark d-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                                        <img src="田中-事務長.svg" alt="事務長 印鑑" class="img-fluid">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="form-label fw-bold text-dark">本部長</label>
+                                    <div class="border border-dark d-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                                        <img src="瀬戸山-本部長.svg" alt="本部長 印鑑" class="img-fluid">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="form-label fw-bold text-dark">所属長</label>
+                                    <div class="border border-dark d-flex align-items-center justify-content-center" style="width: 80px; height: 80px;"></div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="form-label fw-bold text-dark">部門部長</label>
+                                    <div class="border border-dark d-flex align-items-center justify-content-center" style="width: 80px; height: 80px;"></div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="form-label fw-bold text-dark">本部受付</label>
+                                    <div class="border border-dark d-flex align-items-center justify-content-center" style="width: 80px; height: 80px;"></div>
+                                </div>
+                                <div class="col-md-3">
                                     <label class="form-label fw-bold text-dark">本部処理</label>
-                                    <input type="text" name="headquarters_processing_stamp" class="form-control border-dark" readonly>
+                                    <div class="border border-dark d-flex align-items-center justify-content-center" style="width: 80px; height: 80px;"></div>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- 承認者コメントセクション -->
+                        <div class="mb-4">
+                            <label for="approval_comments" class="form-label fw-bold text-dark">承認者コメント</label>
+                            <textarea id="approval_comments" name="approval_comments" rows="4" class="form-control border-dark"></textarea>
+                        </div>
+
                         <button type="submit" class="btn btn-success w-100 mb-3">承認</button>
+                        <button type="button" class="btn btn-danger w-100">拒否</button>
                     </form>
                 </div>
             </div>
