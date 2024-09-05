@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>経費精算書</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container-fluid" style="width: 210mm; padding-top: 20px;">
+        <h2 class="text-center mb-4">経費精算書</h2>
+        <p class="fw-bold mb-3">申請日: 2024-08-01</p>
+        <div class="d-flex justify-content-between mb-1">
+            <p class="fw-bold">氏名: 佐藤 太郎</p>
+            <p class="fw-bold">所属事業所: 東京営業所</p>
+        </div>
+        <table class="table table-bordered border-dark w-100">
+            <thead>
+                <tr>
+                    <th scope="col" style="width: 15%;">日付</th>
+                    <th scope="col" style="width: 15%;">領収書番号</th>
+                    <th scope="col" style="width: 10%;">勘定科目</th>
+                    <th scope="col" style="width: 25%;">支払内容</th>
+                    <th scope="col" style="width: 20%;">支払先</th>
+                    <th scope="col" style="width: 15%;">金額</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- 10行のデータ行を追加 -->
+                <tr><td>2024-08-01</td><td>465409840651496</td><td>交通費</td><td>JR東海道新幹線利用の為</td><td>JF東海道新幹線</td><td>330,000</td></tr>
+                <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+                <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+                <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+                <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+                <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+                <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+                <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+                <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+                <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+                <tr>
+                    <td colspan="5" class="fw-bold text-end">合計</td>
+                    <td>&nbsp;</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- 備考欄 -->
+        <table class="table table-bordered border-dark w-100">
+            <thead>
+                <tr>
+                    <th class="fw-bold">備考</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="height: 100px;">&nbsp;</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- 事務処理欄と印鑑欄 -->
+<table class="table table-bordered border-dark w-100 mt-3">
+    <thead>
+        <tr>
+            <th class="text-center align-middle" rowspan="2" style="width: calc(100% - 480px);">(事務処理欄)</th>
+            <th class="text-center" style="width: 80px;">受取確認</th>
+            <th class="text-center" style="width: 80px;">出納担当者</th>
+            <th class="text-center" style="width: 80px;">所属長</th>
+            <th class="text-center" style="width: 80px;">作成者</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>&nbsp;</td>
+            <td class="text-center" style="height: 80px;">
+                <img src="瀬戸山-本部長.svg" alt="受取確認 印鑑" style="width: 80px; height: 80px;">
+            </td>
+            <td class="text-center" style="height: 80px;">
+                <img src="瀬戸山-本部長.svg" alt="出納担当者 印鑑" style="width: 80px; height: 80px;">
+            </td>
+            <td class="text-center" style="height: 80px;">
+                <img src="瀬戸山-本部長.svg" alt="所属長 印鑑" style="width: 80px; height: 80px;">
+            </td>
+            <td class="text-center" style="height: 80px;">
+                <img src="瀬戸山-本部長.svg" alt="作成者 印鑑" style="width: 80px; height: 80px;">
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- 本部処理欄 -->
+<table class="table table-bordered border-dark w-100 mt-3">
+    <thead>
+        <tr>
+            <th class="text-center align-middle" rowspan="2" style="width: calc(100% - 240px);">(本部処理欄)</th>
+            <th class="text-center" style="width: 80px;">処理</th>
+            <th class="text-center" style="width: 80px;">確認</th>
+            <th class="text-center" style="width: 80px;">受付</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>&nbsp;</td>
+            <td class="text-center" style="height: 80px;">
+                <img src="瀬戸山-本部長.svg" alt="処理 印鑑" style="width: 80px; height: 80px;">
+            </td>
+            <td class="text-center" style="height: 80px;">
+                <img src="瀬戸山-本部長.svg" alt="確認 印鑑" style="width: 80px; height: 80px;">
+            </td>
+            <td class="text-center" style="height: 80px;">
+                <img src="瀬戸山-本部長.svg" alt="受付 印鑑" style="width: 80px; height: 80px;">
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+    </div>
+</body>
+</html>
