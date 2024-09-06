@@ -46,16 +46,31 @@
                     </div>
                 </div>
             </div>
-            <!-- 修正された承認済みセクション -->
+
+            <!-- 承認済みセクション -->
             <div class="col-md-6 mb-4">
                 <div class="card shadow">
-                    <div class="card-header bg-warning text-white">
+                    <div class="card-header bg-danger text-white">
                         <h2 class="card-title">承認済み</h2>
                     </div>
                     <div class="card-body">
-                        <button onclick="location.href='applicant_approval_completed.html'" class="btn btn-outline-warning w-100 mb-2 fs-4">起案書印刷</button>
-                        <button onclick="location.href='buy_approval_completed.html'" class="btn btn-outline-warning w-100 mb-2 fs-4">購入申請印刷</button>
-                        <button onclick="location.href='expenses_approval_completed.html'" class="btn btn-outline-warning w-100 fs-4">経費精算書印刷</button>
+                        <button onclick="location.href='applicant_approval_completed.html'" class="btn btn-outline-danger w-100 mb-2 fs-4">起案書印刷</button>
+                        <button onclick="location.href='buy_approval_completed.html'" class="btn btn-outline-danger w-100 mb-2 fs-4">購入申請印刷</button>
+                        <button onclick="location.href='expenses_approval_completed.html'" class="btn btn-outline-danger w-100 fs-4">経費精算書印刷</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- マイページセクション -->
+            <div class="col-md-6 mb-4">
+                <div class="card shadow">
+                    <div class="card-header bg-dark text-white">
+                        <h2 class="card-title">マイページ</h2>
+                    </div>
+                    <div class="card-body">
+                        <button onclick="location.href='admin.html'" class="btn btn-outline-dark w-100 mb-2 fs-4">管理者マイページ</button>
+                        <button onclick="location.href='applicant_admin.html'" class="btn btn-outline-dark w-100 mb-2 fs-4">申請者マイページ</button>
+                        <button onclick="location.href='approval_admin.html'" class="btn btn-outline-dark w-100 fs-4">承認者マイページ</button>
                     </div>
                 </div>
             </div>
