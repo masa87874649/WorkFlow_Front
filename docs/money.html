@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>経費累計ページ</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.jsのCDNを追加 -->
+</head>
+<body>
+    <!-- ヘッダー -->
+    <header class="bg-dark text-white p-2 d-flex align-items-center justify-content-between">
+        <div>
+            <img src="logo.svg" alt="ロゴ" style="width: 50px; height: 50px;">
+        </div>
+        <h1 class="m-0 flex-grow-1 text-center">経費累計</h1>
+    </header>
+
+    <div class="container mt-3 pb-5">
+        <!-- フィルタ機能 -->
+        <div class="card mb-4">
+            <div class="card-header bg-info text-white">
+                <h2 class="card-title">フィルタ</h2>
+            </div>
+            <div class="card-body">
+                <!-- フィルタフォーム -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="startDate" class="form-label">開始日</label>
+                        <input type="date" class="form-control" id="startDate">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="endDate" class="form-label">終了日</label>
+                        <input type="date" class="form-control" id="endDate">
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <label for="category" class="form-label">申請カテゴリ</label>
+                        <select class="form-select" id="category">
+                            <option value="all">すべて</option>
+                            <option value="kessai">決裁（起案）申請書</option>
+                            <option value="kounyu">購入申請書</option>
+                            <option value="keihi">経費精算書</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <button class="btn btn-primary mt-4 w-100">検索</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 経費累計表示 -->
+        <div class="card mb-4">
+            <div class="card-header bg-success text-white">
+                <h2 class="card-title">経費累計</h2>
+            </div>
+            <div class="card-body">
+                <h3>総合計: ¥1,000,000</h3>
+                <p>カテゴリ別累計:</p>
+                <ul>
+                    <li>決裁（起案）申請書: ¥400,000</li>
+                    <li>購入申請書: ¥300,000</li>
+                    <li>経費精算書: ¥300,000</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- グラフエリア -->
+        <div class="card mb-4">
+            <div class="card-header bg-primary text-white">
+                <h2 class="card-title">経費グラフ</h2>
+            </div>
+            <div class="card-body">
+                <canvas id="expenseChart" width="400" height="200"></canvas> <!-- グラフを表示するキャンバス -->
+            </div>
+        </div>
+
+        <!-- 詳細リスト -->
+        <div class="card shadow mb-4">
+            <div class="card-header bg-success text-white">
+                <h2 class="card-title">申請一覧</h2>
+            </div>
+            <div class="card-body">
+                <!-- テーブル -->
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col" style="min-width: 120px;">申請日</th>
+                                <th scope="col" style="min-width: 200px;">申請タイトル</th>
+                                <th scope="col" style="min-width: 100px;">金額</th>
+                                <th scope="col" style="min-width: 150px;">申請者名</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2024/09/01</td>
+                                <td>決裁（起案）申請書</td>
+                                <td>¥100,000</td>
+                                <td>山田太郎</td>
+                            </tr>
+                            <tr>
+                                <td>2024/08/28</td>
+                                <td>購入申請書</td>
+                                <td>¥200,000</td>
+                                <td>鈴木花子</td>
+                            </tr>
+                            <tr>
+                                <td>2024/08/25</td>
+                                <td>経費精算書</td>
+                                <td>¥300,000</td>
+                                <td>田中次郎</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- ページネーション -->
+                <nav aria-label="Page navigation">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled">
+                            <a class="page-link">前へ</a>
+                        </li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">次へ</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <!-- フッター -->
+    <footer class="bg-dark text-white fixed-bottom">
+        <div class="container">
+            <div class="row text-center py-2">
+                <div class="col">
+                    <a href="index.html" class="text-white d-flex flex-column align-items-center py-2 text-decoration-none">
+                        <i class="fas fa-home fa-lg"></i>
+                    </a>
+                </div>
+                <div class="col">
+                    <a href="print.html" class="text-white d-flex flex-column align-items-center py-2 text-decoration-none">
+                        <i class="fas fa-print fa-lg"></i>
+                    </a>
+                </div>
+                <div class="col">
+                    <a href="#" class="text-white d-flex flex-column align-items-center py-2 text-decoration-none">
+                        <i class="fas fa-user fa-lg"></i>
+                    </a>
+                </div>
+                <div class="col">
+                    <a href="#" class="text-white d-flex flex-column align-items-center py-2 text-decoration-none">
+                        <i class="fas fa-sign-out-alt fa-lg"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chart.js用スクリプト -->
+    <script>
+        const ctx = document.getElementById('expenseChart').getContext('2d');
+        const expenseChart = new Chart(ctx, {
+            type: 'bar', // グラフの種類 (棒グラフ)
+            data: {
+                labels: ['決裁（起案）申請書', '購入申請書', '経費精算書'],
+                datasets: [{
+                    label: '経費累計',
+                    data: [400000, 300000, 300000], // 各カテゴリの経費累計
+                    backgroundColor: [
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(153, 102, 255, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(255, 159, 64, 1)',
+                        'rgba(153, 102, 255, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

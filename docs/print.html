@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>印刷リスト</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- ヘッダー -->
+    <header class="bg-dark text-white p-2 d-flex align-items-center justify-content-between">
+        <div>
+            <img src="logo.svg" alt="ロゴ" style="width: 50px; height: 50px;">
+        </div>
+        <h1 class="m-0 flex-grow-1 text-center">印刷リスト</h1>
+    </header>
+
+    <div class="container mt-3 pb-5">
+        <!-- 印刷リストカード -->
+        <div class="card shadow mb-4">
+            <div class="card-header bg-success text-white">
+                <h2 class="card-title">申請書の印刷</h2>
+            </div>
+            <div class="card-body">
+                <!-- 横スクロール対応のテーブル -->
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col" style="min-width: 120px;">申請日</th>
+                                <th scope="col" style="min-width: 200px;">申請タイトル</th>
+                                <th scope="col" style="min-width: 100px;">ステータス</th>
+                                <th scope="col" style="min-width: 150px;">申請者名</th>
+                                <th scope="col" style="min-width: 100px;">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2024/09/01</td>
+                                <td><a href="#">決裁（起案）申請書</a></td>
+                                <td><span class="badge bg-warning">進行中</span></td>
+                                <td>山田太郎</td>
+                                <td><a href="applicant_approval_completed.html" target="_blank" class="btn btn-primary btn-sm">印刷</a></td>
+                            </tr>
+                            <tr>
+                                <td>2024/08/28</td>
+                                <td><a href="#">購入申請書</a></td>
+                                <td><span class="badge bg-success">承認済</span></td>
+                                <td>鈴木花子</td>
+                                <td><a href="buy_approval_completed.html" target="_blank" class="btn btn-primary btn-sm">印刷</a></td>
+                            </tr>
+                            <tr>
+                                <td>2024/08/25</td>
+                                <td><a href="#">経費精算書</a></td>
+                                <td><span class="badge bg-danger">拒否</span></td>
+                                <td>田中次郎</td>
+                                <td><a href="expenses_approval_completed.html" target="_blank" class="btn btn-primary btn-sm">印刷</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- ページネーション -->
+                <nav aria-label="Page navigation">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled">
+                            <a class="page-link">前へ</a>
+                        </li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">次へ</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <!-- フッター -->
+    <footer class="bg-dark text-white fixed-bottom mt-5">
+        <div class="container">
+            <div class="row text-center py-4">
+                <div class="col">
+                    <a href="index.html" class="text-white d-flex flex-column align-items-center py-2 text-decoration-none">
+                        <i class="fas fa-home fa-lg"></i>
+                    </a>
+                </div>
+                <div class="col">
+                    <a href="received_list.html" class="text-white d-flex flex-column align-items-center py-2 text-decoration-none">
+                        <i class="fas fa-list fa-lg"></i>
+                    </a>
+                </div>
+                <div class="col">
+                    <a href="#" class="text-white d-flex flex-column align-items-center py-2 text-decoration-none">
+                        <i class="fas fa-user fa-lg"></i>
+                    </a>
+                </div>
+                <div class="col">
+                    <a href="#" class="text-white d-flex flex-column align-items-center py-2 text-decoration-none">
+                        <i class="fas fa-sign-out-alt fa-lg"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
