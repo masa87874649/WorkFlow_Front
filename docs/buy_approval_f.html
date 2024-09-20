@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>購入申請 - 承認</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-3" style="max-width: 800px;">
+        <a href="javascript:history.back()" class="btn btn-danger mb-3">戻る</a>
+        <section class="buy-section">
+            <div class="card shadow mb-4">
+                <div class="card-header bg-light text-dark fw-bold">
+                    <h1 class="text-center my-4">購入申請 - 承認</h1>
+                </div>
+                <div class="card-body">
+                    <form id="buy-approval-form">
+                        <p>以下の購入申請の承認をお願いいたします。</p>
+                        <div class="mb-4">
+                            <label for="submission_date" class="form-label fw-bold text-dark">申請日</label>
+                            <input type="date" id="submission_date" name="submission_date" class="form-control border-dark" readonly>
+                        </div>
+                        <div class="mb-4">
+                            <label for="applicant_name" class="form-label fw-bold text-dark">申請者の氏名</label>
+                            <input type="text" id="applicant_name" name="applicant_name" class="form-control border-dark" readonly>
+                        </div>
+                        <div class="mb-4">
+                            <label for="office" class="form-label fw-bold text-dark">所属事業所</label>
+                            <input type="text" id="office" name="office" class="form-control border-dark" readonly>
+                        </div>
+                        <div id="products">
+                            <div class="product card mb-3">
+                                <div class="card-body">
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label fw-bold text-dark">購入予定日</label>
+                                            <input type="date" class="form-control border-dark" readonly>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label fw-bold text-dark">品名</label>
+                                            <input type="text" class="form-control border-dark" readonly>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label fw-bold text-dark">購入先</label>
+                                            <input type="text" class="form-control border-dark" readonly>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label fw-bold text-dark">単価</label>
+                                            <input type="number" class="form-control border-dark" readonly>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label fw-bold text-dark">数量</label>
+                                            <input type="number" class="form-control border-dark" readonly>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label fw-bold text-dark">金額</label>
+                                            <input type="number" class="form-control border-dark" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label fw-bold text-dark">購入目的</label>
+                            <textarea class="form-control border-dark" rows="4" readonly></textarea>
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label fw-bold text-dark">備考</label>
+                            <textarea class="form-control border-dark" rows="4" readonly></textarea>
+                        </div>
+                        <div class="mb-4">
+                            <h5 class="fw-bold text-center text-dark mb-3" style="background-color: #d3d3d3; padding: 10px;">承認印</h5>
+                            <div class="row row-cols-3 row-cols-md-5 g-3 justify-content-center">
+                                <div class="col d-flex flex-column align-items-center">
+                                    <label class="form-label fw-bold text-dark text-center">本部受付</label>
+                                    <div class="border border-dark d-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                                        <img src="本部受付.svg" alt="本部受付 印鑑" class="img-fluid">
+                                    </div>
+                                </div>
+                                <div class="col d-flex flex-column align-items-center">
+                                    <label class="form-label fw-bold text-dark text-center">本部承認</label>
+                                    <div class="border border-dark d-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                                        <img src="本部承認.svg" alt="本部承認 印鑑" class="img-fluid">
+                                    </div>
+                                </div>
+                                <div class="col d-flex flex-column align-items-center">
+                                    <label class="form-label fw-bold text-dark text-center">本部発注</label>
+                                    <div class="border border-dark d-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                                        <img src="本部受付.svg" alt="本部受付 印鑑" class="img-fluid">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 送信済みコメントセクション -->
+                        <div class="mb-4">
+                            <div class="card border-light shadow-sm mb-3">
+                                <div class="card-body">
+                                    <p class="mb-0">新システム導入に賛成しますが、予算内で調整してください。</p>
+                                    <p class="comment-meta text-end" style="font-size: 0.85em; color: gray;">佐藤部長 2024/9/19 17:01</p> <!-- 名前と時刻を右下に配置 -->
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
